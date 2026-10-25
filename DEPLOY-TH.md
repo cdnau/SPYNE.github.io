@@ -1,13 +1,13 @@
 # เผยแพร่ SPYNE บน GitHub Pages
 
-ชุดนี้พร้อมสำหรับรีโป https://github.com/fuze-thnd/SPYNE
-ที่อยู่เมื่อ deploy สำเร็จ: https://fuze-thnd.github.io/SPYNE/
+ชุดนี้พร้อมสำหรับรีโป https://github.com/cdnau/SPYNE.github.io
+ที่อยู่เมื่อ deploy สำเร็จ: https://cdnau.github.io/SPYNE.github.io/
 
 ## ค่าที่ใช้ตั้งค่า
 
 | รายการ | ค่า |
 | --- | --- |
-| Repository | fuze-thnd/SPYNE |
+| Repository | cdnau/SPYNE.github.io |
 | Source | Deploy from a branch |
 | Branch | main |
 | Folder | /docs |
@@ -38,15 +38,15 @@ SPYNE/
 คู่มือ DEPLOY-TH.md และ EDIT-GUIDE.md เก็บไว้อ่านบนเครื่องได้ ไม่จำเป็นต้องอัปโหลด
 
 ## อัปโหลดและเปิด Pages
-1. แตกไฟล์ SPYNE-github-pages.zip
-2. เข้าสู่ระบบ GitHub ด้วยบัญชีที่มีสิทธิ์แก้ไข fuze-thnd/SPYNE
-3. เปิด https://github.com/fuze-thnd/SPYNE แล้วเลือก Add file → Upload files
+1. แตกไฟล์ SPYNE.github.io-updated.zip
+2. เข้าสู่ระบบ GitHub ด้วยบัญชีที่มีสิทธิ์แก้ไข cdnau/SPYNE.github.io
+3. เปิด https://github.com/cdnau/SPYNE.github.io แล้วเลือก Add file → Upload files
 4. ลากโฟลเดอร์ docs ทั้งโฟลเดอร์เข้าไป ตรวจว่าไฟล์อยู่ที่ docs/index.html และ docs/assets/ แล้ว Commit changes ลง main
-5. ไป https://github.com/fuze-thnd/SPYNE/settings/pages
+5. ไป https://github.com/cdnau/SPYNE.github.io/settings/pages
 6. ใน Build and deployment เลือก Source: Deploy from a branch
 7. เลือก Branch: main และ Folder: /docs แล้วกด Save
 8. รอ GitHub แสดงว่าเผยแพร่สำเร็จ ตรวจสถานะที่ Actions หากมีข้อผิดพลาด
-9. เปิด https://fuze-thnd.github.io/SPYNE/
+9. เปิด https://cdnau.github.io/SPYNE.github.io/
 
 ## ตรวจหลังเผยแพร่
 

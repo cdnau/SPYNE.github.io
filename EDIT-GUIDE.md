@@ -46,3 +46,16 @@ youtubeUrl: 'https://www.youtube.com/watch?v=รหัสวิดีโอ',
 ชุด ZIP สำหรับ GitHub Pages ใช้โฟลเดอร์ docs แทน docs ทุกไฟล์ด้านบนจึงอยู่ใน docs/ เช่น docs/content.js หลังแก้ให้อัปโหลดไฟล์ขึ้นรีโป แล้ว Pages จะเผยแพร่ตาม main /docs ที่ตั้งไว้
 
 สื่อทดลองและผลลัพธ์จริงรอทีมจัดทำ ข้อมูลจำลองในหน้าเว็บมีป้ายกำกับ และโค้ดอุปกรณ์ยังอยู่ระหว่างพัฒนา
+
+
+## ส่วนที่เพิ่ม: บทคัดย่อ Hardware และ Source Code
+
+- บทคัดย่อไทย/อังกฤษ: docs/index.html ค้นหา id="abstract"
+- รูป Hardware และเครดิต: docs/index.html ค้นหา id="hardware"
+- ตารางขา ตัวแปร Cloud และตรรกะ: docs/index.html ค้นหา id="technical-details"
+- โค้ดอุปกรณ์ต้นฉบับ: docs/source/SPYNE.ino
+- โค้ดที่แสดงบนหน้าเว็บ: docs/index.html ค้นหา id="firmware-code" (ต้อง escape &, <, > หากแก้ด้วยมือ)
+- เมื่อเปลี่ยน firmware ให้เปลี่ยนทั้งไฟล์ดาวน์โหลดและเนื้อหาที่แสดงบนหน้าเว็บให้ตรงกัน
+- สไตล์เฉพาะส่วนที่เพิ่ม: docs/project-details.css
+- ปุ่มคัดลอกโค้ด: docs/source-viewer.js
+- แหล่งรูปและผลการยืนยันรุ่น: HARDWARE-SOURCES.md

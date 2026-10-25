@@ -1,8 +1,8 @@
 <!doctype html>
 <!--
   แผนที่หน้าเว็บ (Ctrl+F ค้นหาชื่อหรือเลขส่วนด้านล่าง)
-  01 หน้าแรก | 02 ตัวเลขสรุป | 03 แนวคิด | 04 จำลองท่านั่ง
-  05 คลิปนำเสนอ | 06 สื่อทดลอง | 07 ผลทดลอง | 08 อุปกรณ์ | 09 ทีม
+  01 หน้าแรก | 02 ตัวเลขสรุป | 03A บทคัดย่อ | 03 แนวคิด | 04 จำลองท่านั่ง
+  05 คลิปนำเสนอ | 06 สื่อทดลอง | 07 ผลทดลอง | 08 อุปกรณ์ | 08A รายละเอียดระบบ | 08B Source Code | 09 ทีม
 
   แก้คลิป/รูป: content.js | แก้ธีม: style.css | ภาพท่านั่ง: assets/posture-diagram.svg
 -->
@@ -15,9 +15,11 @@
     <meta name="description" content="SPYNE โครงงาน Physical Computing ตรวจจับท่านั่งด้วย Ultrasonic Sensor สองระดับ — ต้นแบบระหว่างพัฒนา">
     <title>SPYNE — รู้ทันทุกท่านั่ง</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project-details.css">
     <script src="content.js" defer></script>
     <script src="demo-data.js" defer></script>
     <script src="app.js" defer></script>
+    <script src="source-viewer.js" defer></script>
   </head>
   <body>
 
@@ -27,6 +29,7 @@
         SPYNE
       </a>
       <nav aria-label="เมนูหลัก">
+        <a href="#abstract">บทคัดย่อ</a>
         <a href="#concept">
           แนวคิด
         </a>
@@ -39,6 +42,8 @@
         <a href="#team">
           ทีมผู้จัดทำ
         </a>
+        <a href="#hardware">Hardware</a>
+        <a href="#source-code">Source Code</a>
       </nav>
       <a class="repo" href="https://github.com/fuze-thnd/SPYNE" target="_blank" rel="noopener">
         GitHub ↗
@@ -133,6 +138,33 @@
           </span>
         </div>
       </div>
+
+      <!-- 03A. บทคัดย่อ — แก้เนื้อหาภาษาไทยและอังกฤษตรงนี้ -->
+      <section id="abstract" class="wrap abstract-section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">PROJECT SUMMARY</p>
+            <h2>บทคัดย่อ <span class="heading-en">Abstract</span></h2>
+          </div>
+          <a class="text-link" href="#source-code">อ่าน Source Code ↓</a>
+        </div>
+        <article class="abstract-text" lang="th">
+          <h3>ระบบต้นแบบตรวจจับและแจ้งเตือนท่านั่ง SPYNE</h3>
+          <p>โครงงาน SPYNE มีวัตถุประสงค์เพื่อพัฒนาระบบต้นแบบสำหรับตรวจจับและจำแนกท่านั่งขณะใช้งานคอมพิวเตอร์ และแจ้งเตือนเมื่อผู้ใช้คงท่าที่ควรปรับต่อเนื่อง โดยใช้บอร์ด Arduino UNO R4 WiFi ร่วมกับเซนเซอร์อัลตราโซนิก HC-SR04 จำนวน 2 ตัว ติดตั้งบริเวณหน้าจอที่ระดับศีรษะและหน้าอก ระบบเปรียบเทียบระยะที่วัดได้กับค่าอ้างอิงจากการปรับเทียบในท่านั่งตรง และใช้ค่าคลาดเคลื่อนที่กำหนดเพื่อจำแนกสถานะ โดยไม่ใช้ภาพจากกล้อง</p>
+          <p>โปรแกรมปัจจุบันจำแนกสถานะเป็นนั่งตรง ใกล้เกินไป ไกลเกินไป คอยื่น ตัวไถลหรือหลังยุบ ไม่ได้นั่ง และสถานะไม่สมดุลสำหรับกรณีที่ไม่ตรงเงื่อนไขหลัก การอ่านระยะใช้ค่าเฉลี่ยจากตัวอย่างที่รับสัญญาณได้ และยืนยันท่าใหม่เมื่อพบต่อเนื่อง 4 รอบ ระบบแสดงระยะและสถานะบนจอ LCD 16×2 ผ่าน I2C พร้อมแจ้งสถานะด้วย RGB LED เมื่อท่าที่ควรปรับคงอยู่ครบ 10 วินาทีตามเวลาที่ตั้งไว้ จะใช้ไฟสีแดงและเสียง Buzzer นอกจากนี้ยังเชื่อมต่อ Arduino Cloud เพื่อส่งค่าระยะและสถานะ รับค่าคลาดเคลื่อน และรับคำสั่งปรับเทียบ</p>
+          <p>โครงงานอยู่ระหว่างพัฒนาและทดสอบ โค้ดยังไม่ใช่ฉบับสุดท้าย และยังไม่มีผลการทดลองจริงเพื่อสรุปความแม่นยำหรือประสิทธิภาพในการใช้งาน เนื้อหาที่นำเสนอจึงอธิบายการออกแบบและพฤติกรรมตามโปรแกรมต้นแบบ โดยเว้นพื้นที่สำหรับทีมผู้จัดทำเพิ่มภาพชิ้นงาน วิดีโอการทดลอง และผลประเมินภายหลัง</p>
+          <p class="keywords"><strong>คำสำคัญ:</strong> ท่านั่ง · อัลตราโซนิก · Arduino UNO R4 WiFi · Arduino Cloud · Physical Computing</p>
+        </article>
+        <details class="english-abstract">
+          <summary>อ่านบทคัดย่อภาษาอังกฤษ / English abstract</summary>
+          <div lang="en">
+            <p>SPYNE is an educational prototype designed to detect sitting posture during computer use and provide feedback when a posture requiring adjustment persists. The system uses an Arduino UNO R4 WiFi and two HC-SR04 ultrasonic sensors positioned at head and chest levels near the monitor. Measured distances are compared with calibrated upright baselines and a configurable tolerance, without using a camera.</p>
+            <p>The current program classifies upright, too close, too far, head forward, slide/slump, and not sitting states, with an additional unbalanced state for unmatched patterns. Valid distance readings are averaged, and a new state must persist for four sensing cycles before being accepted. A 16×2 I2C LCD displays distances and posture. An RGB LED provides visual feedback, while a buzzer is activated after a sustained non-upright, seated state reaches the configured 10-second delay. Arduino Cloud exchanges distance and posture data and supports remote tolerance adjustment and calibration requests.</p>
+            <p>Development and physical testing are ongoing. The code is not final, and no experimental results are yet available to establish classification accuracy or practical effectiveness. This presentation describes the prototype design and current implementation; photographs, demonstration videos, and evaluation results will be supplied by the project team.</p>
+            <p class="keywords"><strong>Keywords:</strong> sitting posture, ultrasonic sensing, Arduino UNO R4 WiFi, Arduino Cloud, physical computing.</p>
+          </div>
+        </details>
+      </section>
 
       <!-- 03. แนวคิดและวัตถุประสงค์ -->
       <section id="concept" class="wrap split">
@@ -360,71 +392,494 @@
         </div>
       </section>
 
-      <!-- 08. อุปกรณ์และตัวแปร Cloud -->
-      <section id="hardware" class="hardware wrap split">
-        <div>
-          <p class="eyebrow">
-            05 / UNDER THE HOOD
-          </p>
-          <h2>
-            เบื้องหลัง
-            <br>
-            ระบบต้นแบบ
-          </h2>
-          <a class="text-link" href="https://github.com/fuze-thnd/SPYNE" target="_blank" rel="noopener">
-            ดูโปรเจกต์บน GitHub ↗
-          </a>
+      <!-- 08. Hardware — ภาพมีเฉพาะอุปกรณ์ที่ระบุรุ่นได้แน่ชัด -->
+      <section id="hardware" class="hardware wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">05 / HARDWARE</p>
+            <h2>อุปกรณ์ที่ใช้ในโครงงาน</h2>
+          </div>
+          <p>รุ่นอ้างอิงตามไฟล์โครงงาน<br>ภาพผลิตภัณฑ์ใช้ประกอบคำอธิบาย</p>
         </div>
-        <div>
-          <h3>
-            Hardware
-          </h3>
-          <p>
-            Arduino UNO R4 WiFi · HC-SR04 ×2 · RGB LED · LCD 16×2 I2C · Buzzer · Breadboard และอุปกรณ์ต่อวงจร
-          </p>
-          <h3>
-            Arduino Cloud
-          </h3>
-          <div class="cloud-row">
-            <code>
-              headDistance / chestDistance
-            </code>
-            <span>
-              อ่านอย่างเดียว · ทุก 3 วินาที
-            </span>
+        <div class="hardware-gallery">
+          <figure class="hardware-card">
+            <div class="hardware-photo">
+              <img src="assets/hardware/arduino-uno-r4-wifi.jpg" alt="บอร์ด Arduino UNO R4 WiFi รุ่น ABX00087 มีชื่อ UNO R4 WIFI และ LED matrix บนบอร์ด" loading="lazy" width="934" height="700">
+            </div>
+            <figcaption>
+              <span class="hardware-model">CONTROLLER · 1 บอร์ด</span>
+              <h3>Arduino UNO R4 WiFi</h3>
+              <p>บอร์ดควบคุมหลัก อ่านค่าเซนเซอร์ จำแนกท่านั่ง ควบคุมการแจ้งเตือน และเชื่อมต่อ Arduino Cloud</p>
+              <p class="image-credit">ภาพ: <a href="https://store.arduino.cc/products/uno-r4-wifi" target="_blank" rel="noopener">Arduino — UNO R4 WiFi (ABX00087) ↗</a></p>
+            </figcaption>
+          </figure>
+          <figure class="hardware-card">
+            <div class="hardware-photo">
+              <img src="assets/hardware/hc-sr04.jpg" alt="เซนเซอร์อัลตราโซนิก HC-SR04 พร้อมขา VCC Trig Echo และ GND" loading="lazy" width="600" height="600">
+            </div>
+            <figcaption>
+              <span class="hardware-model">DISTANCE SENSOR · 2 ตัว</span>
+              <h3>HC-SR04</h3>
+              <p>เซนเซอร์อัลตราโซนิก 2 ระดับ สำหรับวัดระยะศีรษะและหน้าอก โดยใช้ขา Trig ส่งสัญญาณและขา Echo อ่านช่วงเวลาสะท้อนกลับ</p>
+              <p class="image-credit">ภาพ: <a href="https://www.sparkfun.com/ultrasonic-distance-sensor-hc-sr04.html" target="_blank" rel="noopener">SparkFun — HC-SR04 (5V) ↗</a></p>
+            </figcaption>
+          </figure>
+        </div>
+        <p class="small muted">ค้นหาแหล่งภาพผ่าน Google และตรวจชื่อรุ่นกับหน้าต้นทาง ภาพข้างต้นเป็นภาพผลิตภัณฑ์ ไม่ใช่ภาพชิ้นงานทดลองของทีม</p>
+
+        <h3 class="subsection-title">อุปกรณ์อื่นตามข้อมูลในไฟล์</h3>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="รายการอุปกรณ์อื่น">
+          <table class="project-table">
+            <thead><tr><th scope="col">อุปกรณ์</th><th scope="col">หน้าที่ / ข้อมูลที่ระบุ</th><th scope="col">สถานะรูป</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">LCD 16×2 พร้อม I2C</th><td>แสดงระยะและสถานะ ใช้ LiquidCrystal_I2C ที่ address 0x27 ตามโค้ด</td><td>รอยืนยันรหัสรุ่น</td></tr>
+              <tr><th scope="row">RGB LED</th><td>แสดงสถานะด้วยสี ควบคุมช่อง R / G / B แยกกัน</td><td>รอยืนยันรุ่นและชนิดขาร่วม</td></tr>
+              <tr><th scope="row">Buzzer</th><td>แจ้งเตือนด้วยเสียง โค้ดระบุ Passive Buzzer และใช้ tone()</td><td>รอยืนยันชนิดและรุ่นจริง</td></tr>
+              <tr><th scope="row">Breadboard</th><td>ใช้ประกอบวงจรต้นแบบ ไฟล์ไม่ได้ระบุขนาดหรือรุ่น</td><td>รอยืนยันรุ่น</td></tr>
+              <tr><th scope="row">Jumper wires / Resistors</th><td>ใช้ต่อวงจร ไฟล์ไม่ได้ระบุชนิดสายและค่าตัวต้านทาน</td><td>รอยืนยันรายละเอียด</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <details class="hardware-note">
+          <summary>หมายเหตุอุปกรณ์และข้อมูลที่ยังต้องยืนยัน</summary>
+          <p>เอกสาร README เดิมระบุ Active Buzzer แต่ SPYNE.ino ระบุ Passive Buzzer และใช้ tone() จึงต้องตรวจอุปกรณ์จริงก่อนสรุปชนิด ส่วน LCD, RGB LED และอุปกรณ์ต่อวงจรไม่มีรหัสรุ่นที่เพียงพอสำหรับเลือกรูปตรงรุ่น จึงแสดงข้อมูลจากไฟล์และรอทีมยืนยัน</p>
+        </details>
+      </section>
+
+      <!-- 08A. รายละเอียดการทำงาน — อ้างอิง SPYNE.ino และ Cloud Varibale.docx -->
+      <section id="technical-details" class="wrap technical-section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">SYSTEM DETAILS</p>
+            <h2>รายละเอียดการทำงาน</h2>
           </div>
-          <div class="cloud-row">
-            <code>
-              postureState
-            </code>
-            <span>
-              อ่านอย่างเดียว · เมื่อเปลี่ยนค่า
-            </span>
+          <p>อ้างอิงโปรแกรมต้นแบบที่แนบ<br>ค่าที่แสดงเป็นค่าตั้งในโค้ด</p>
+        </div>
+        <div class="technical-overview">
+          <article>
+            <h3>Input</h3>
+            <p>ระยะจาก HC-SR04 ระดับศีรษะและหน้าอก ค่าคลาดเคลื่อนที่ผู้ใช้กำหนด และคำสั่ง Calibration ผ่าน Arduino Cloud</p>
+          </article>
+          <article>
+            <h3>Process</h3>
+            <p>อ่านและเฉลี่ยระยะ เปรียบเทียบกับ baseline จำแนกตามเงื่อนไข แล้วยืนยันท่าใหม่ที่พบต่อเนื่อง 4 รอบ</p>
+          </article>
+          <article>
+            <h3>Output</h3>
+            <p>ระยะและสถานะบน LCD สีของ RGB LED เสียง Buzzer และตัวแปรระยะ/สถานะบน Arduino Cloud</p>
+          </article>
+        </div>
+
+        <h3 class="subsection-title">ขาสัญญาณที่กำหนดในโปรแกรม</h3>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="ขาสัญญาณตามโปรแกรม">
+          <table class="project-table">
+            <thead><tr><th scope="col">อุปกรณ์ / สัญญาณ</th><th scope="col">ขาบอร์ด</th><th scope="col">ชื่อใน Source Code</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">HC-SR04 ระดับศีรษะ · Trig / Echo</th><td>D2 / D3</td><td><code>HEAD_TRIG / HEAD_ECHO</code></td></tr>
+              <tr><th scope="row">HC-SR04 ระดับหน้าอก · Trig / Echo</th><td>D4 / D5</td><td><code>CHEST_TRIG / CHEST_ECHO</code></td></tr>
+              <tr><th scope="row">Buzzer</th><td>D6</td><td><code>BUZZER_PIN</code></td></tr>
+              <tr><th scope="row">RGB LED · R / G / B</th><td>D9 / D10 / D11</td><td><code>LED_R / LED_G / LED_B</code></td></tr>
+              <tr><th scope="row">LCD 16×2</th><td>I2C · SDA / SCL</td><td><code>LiquidCrystal_I2C lcd(0x27, 16, 2)</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small muted">ตารางนี้แสดงขาสัญญาณจากโปรแกรม ส่วนการต่อไฟเลี้ยง ขาร่วมของ LED และค่าตัวต้านทานต้องอ้างอิงวงจรจริงของทีม</p>
+
+        <h3 class="subsection-title">การอ่านระยะและการปรับเทียบ</h3>
+        <ol class="method-list">
+          <li><strong>เริ่มระบบ:</strong> ตั้งค่าขาและ LCD แล้วเชื่อมต่อ Arduino Cloud ระหว่างรอเชื่อมต่อไฟสีน้ำเงินจะกะพริบ โปรแกรมจะเข้าสู่ loop หลังเชื่อมต่อสำเร็จ</li>
+          <li><strong>อ่านระยะ:</strong> ส่งพัลส์ Trig ยาว 10 µs แล้วใช้ <code>pulseIn()</code> อ่าน Echo โดยกำหนด timeout 25,000 µs คำนวณระยะเป็น <code>pulseWidth × 0.0343 ÷ 2</code> และเก็บเป็นจำนวนเต็มหน่วยเซนติเมตร</li>
+          <li><strong>กรองค่า:</strong> อ่านเซนเซอร์ละ 3 ครั้ง เฉลี่ยเฉพาะค่าที่ต่ำกว่า 350 หากไม่มีค่าที่ใช้ได้จะคืน 350 เป็นค่าสัญญาณขาดหาย เริ่มอ่านรอบถัดไปเมื่อเวลาที่ผ่านไปถึงเกณฑ์ 250 ms; รอบจริงขึ้นอยู่กับเวลาที่ใช้วัดและ delay ด้วย</li>
+          <li><strong>Calibration:</strong> เมื่อ <code>calibrateTrigger</code> เป็น true ระบบนับถอยหลัง 3 วินาที ให้ผู้ใช้นั่งตรง แล้วอ่าน 10 ตัวอย่างต่อเซนเซอร์เพื่อหาค่าเฉลี่ยเป็น baseline ใหม่ จากนั้นตั้ง trigger กลับเป็น false</li>
+          <li><strong>จำแนก:</strong> เปรียบเทียบกับ baseline โดยใช้ <code>toleranceDistance</code> ถ้าค่ามากกว่า 0 มิฉะนั้นใช้ 6 cm ค่าตั้งต้นก่อน Calibration คือศีรษะ 55 cm และหน้าอก 60 cm</li>
+        </ol>
+
+        <h3 class="subsection-title">เงื่อนไขจำแนกท่านั่ง</h3>
+        <p class="small muted">ตรวจตามลำดับในตาราง “ปกติ” คือระยะต่างจาก baseline ไม่เกิน tolerance; “ใกล้” และ “ไกล” คืออยู่นอกช่วงดังกล่าว</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="เงื่อนไขจำแนกท่านั่ง">
+          <table class="project-table">
+            <thead><tr><th scope="col">สถานะ</th><th scope="col">เงื่อนไขใน computeState()</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>NOT SITTING</code></th><td>ระยะทั้งสองมากกว่า baseline ของตัวเอง + 50 cm</td></tr>
+              <tr><th scope="row"><code>UPRIGHT</code></th><td>ศีรษะปกติ และหน้าอกปกติ</td></tr>
+              <tr><th scope="row"><code>TOO CLOSE</code></th><td>ศีรษะใกล้ และหน้าอกใกล้</td></tr>
+              <tr><th scope="row"><code>TOO FAR</code></th><td>ศีรษะไกล และหน้าอกไกล</td></tr>
+              <tr><th scope="row"><code>HEAD FORWARD</code></th><td>ศีรษะใกล้ แต่หน้าอกปกติ</td></tr>
+              <tr><th scope="row"><code>SLIDE / SLUMP</code></th><td>หน้าอกไกล และศีรษะปกติหรือใกล้</td></tr>
+              <tr><th scope="row"><code>UNBALANCED</code></th><td>ไม่ตรงกับเงื่อนไขข้างต้น</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>ก่อนเปลี่ยนสถานะ ระบบต้องตรวจพบท่าใหม่เดียวกันต่อเนื่อง 4 รอบ เพื่อลดการเปลี่ยนสถานะจากค่าที่แกว่งชั่วคราว</p>
+
+        <h3 class="subsection-title">การแสดงผลและแจ้งเตือน</h3>
+        <ul class="method-list">
+          <li><strong>LCD:</strong> แถวแรกแสดง H และ C เป็นระยะศีรษะ/หน้าอก แถวที่สองแสดงชื่อสถานะ</li>
+          <li><strong>นั่งตรง:</strong> ไฟเขียว และยกเลิกการนับเวลาท่าที่ควรปรับ</li>
+          <li><strong>ไม่ได้นั่ง:</strong> ไฟน้ำเงิน และยกเลิกการนับเวลาท่าที่ควรปรับ</li>
+          <li><strong>สถานะอื่น:</strong> ไฟเหลืองในช่วงก่อนครบ 10 วินาที จากนั้นเป็นไฟแดงและเสียงความถี่ 1,000 Hz ยาว 50 ms โดยให้เสียงได้เมื่อผ่านไปอย่างน้อย 1 วินาทีจากเสียงเตือนครั้งก่อน</li>
+        </ul>
+
+        <h3 class="subsection-title">ตัวแปร Arduino Cloud ทั้งหมด</h3>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="ตัวแปร Arduino Cloud">
+          <table class="project-table">
+            <thead><tr><th scope="col">ตัวแปร</th><th scope="col">ชนิดข้อมูล</th><th scope="col">สิทธิ์</th><th scope="col">อัปเดต</th><th scope="col">หน้าที่</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>headDistance</code></th><td>int</td><td>Read Only</td><td>ทุก 3 วินาที</td><td>ระยะระดับศีรษะ</td></tr>
+              <tr><th scope="row"><code>chestDistance</code></th><td>int</td><td>Read Only</td><td>ทุก 3 วินาที</td><td>ระยะระดับหน้าอก</td></tr>
+              <tr><th scope="row"><code>postureState</code></th><td>String</td><td>Read Only</td><td>On change</td><td>สถานะที่ยืนยันแล้ว</td></tr>
+              <tr><th scope="row"><code>toleranceDistance</code></th><td>int</td><td>Read &amp; Write</td><td>On change</td><td>ค่าคลาดเคลื่อนจาก baseline</td></tr>
+              <tr><th scope="row"><code>calibrateTrigger</code></th><td>bool</td><td>Read &amp; Write</td><td>On change</td><td>ขอเริ่ม Calibration</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details class="implementation-notes">
+          <summary>สถานะการพัฒนาและข้อจำกัดของโค้ดปัจจุบัน</summary>
+          <ul class="method-list">
+            <li>ยังไม่มีผลทดลองจริงสำหรับรายงานความแม่นยำและเวลาตอบสนอง</li>
+            <li>เงื่อนไข SLIDE / SLUMP ในโปรแกรมต่างจากตาราง README เดิม หน้านี้ยึด SPYNE.ino ที่แนบ</li>
+            <li>ระหว่าง Calibration ใช้ค่าที่อ่านโดยตรง 10 ครั้ง รวมถึงค่า timeout หากเกิดขึ้น ยังไม่ได้กรองแบบ readFiltered()</li>
+            <li>baseline เก็บในตัวแปรหน่วยความจำ เมื่อรีสตาร์ตจะกลับเป็นค่าตั้งต้นในโค้ด</li>
+            <li>ช่วง setup รอจนเชื่อมต่อ Cloud สำเร็จ จึงยังไม่เข้าสู่การวัดปกติหากเชื่อมต่อไม่ได้</li>
+            <li>หากเปลี่ยนจากท่าที่ควรปรับท่าหนึ่งไปอีกท่าหนึ่ง เวลาการเตือนยังนับต่อจนกลับเป็น UPRIGHT หรือ NOT SITTING</li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- 08B. Source Code — เนื้อหาโค้ดมาจาก source/SPYNE.ino -->
+      <section id="source-code" class="wrap source-section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">SOURCE CODE</p>
+            <h2>โค้ดของโครงงาน</h2>
           </div>
-          <div class="cloud-row">
-            <code>
-              toleranceDistance
-            </code>
-            <span>
-              อ่าน/เขียน · ปรับค่าคลาดเคลื่อน
-            </span>
+          <a class="button" href="source/SPYNE.ino" download>ดาวน์โหลด SPYNE.ino ↓</a>
+        </div>
+        <p>แสดงไฟล์ <code>SPYNE.ino</code> ฉบับที่ทีมแนบครบทุกบรรทัด โค้ดอยู่ระหว่างพัฒนาและยังไม่ใช่เวอร์ชันสุดท้าย</p>
+        <div class="source-dependencies">
+          <h3>ไฟล์และไลบรารีที่ใช้ร่วมกัน</h3>
+          <p>โปรแกรมเรียกใช้ <code>thingProperties.h</code> สำหรับการตั้งค่า Arduino Cloud และ <code>LiquidCrystal_I2C.h</code> สำหรับจอ LCD โดยไฟล์ที่ได้รับยังไม่มี <code>thingProperties.h</code> และข้อมูลการเชื่อมต่อของบอร์ด จึงต้องตั้งค่า Thing และตัวแปร Cloud ของทีมก่อนนำไปคอมไพล์ใช้งาน</p>
+        </div>
+        <details class="source-panel" open>
+          <summary>SPYNE.ino — ดูโค้ดทั้งหมด</summary>
+          <div class="source-toolbar">
+            <span>Arduino / C++ · <span id="source-line-count">308</span> บรรทัด</span>
+            <button id="copy-source" type="button">คัดลอกโค้ด</button>
+            <span id="copy-status" role="status" aria-live="polite"></span>
           </div>
-          <div class="cloud-row">
-            <code>
-              calibrateTrigger
-            </code>
-            <span>
-              อ่าน/เขียน · สั่งปรับเทียบ
-            </span>
-          </div>
-          <details>
-            <summary>
-              หมายเหตุความต่างระหว่างเอกสารกับโค้ด
-            </summary>
-            <p>
-              README ระบุ Active Buzzer แต่ SPYNE.ino ระบุ Passive Buzzer และใช้ tone() ส่วนเงื่อนไข SLIDE / SLUMP ในโค้ดใช้ระยะหน้าอกไกลกว่าค่าอ้างอิงร่วมกับศีรษะปกติหรือใกล้ ซึ่งต่างจากตาราง README การสาธิตในหน้านี้ยึดโค้ดที่แนบ และต้องตรวจยืนยันกับฮาร์ดแวร์ก่อนสรุปผล
-            </p>
-          </details>
+          <pre class="source-code" tabindex="0" aria-label="Source Code SPYNE.ino"><code id="firmware-code">#include "thingProperties.h"
+#include &lt;LiquidCrystal_I2C.h&gt;
+
+// ultrasonic sensor
+const int HEAD_TRIG = 2;
+const int HEAD_ECHO = 3;
+const int CHEST_TRIG = 4;
+const int CHEST_ECHO = 5;
+const int NO_ECHO = 350;
+
+// passive buzzer
+const int BUZZER_PIN = 6;
+const int TONE = 1000; // change tone
+
+// RGB LED
+const int LED_R = 9;
+const int LED_G = 10;
+const int LED_B = 11;
+
+// liquid crystal
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+// local variable
+const int SENSOR_INTERVAL  = 250;
+const int CLOUD_INTERVAL   = 3000; // 3 seconds
+const int ALERT_DELAY      = 10000; // wrong position more than this will triggered
+const int OUT_FRAME_MARGIN = 50;
+const int STATE_CONFIRM    = 4; // need to hold 4 sensor cycles
+
+int local_head_distance;
+int local_chest_distance;
+int head_base_line  = 55; // default can changed
+int chest_base_line = 60; // default can changed
+
+bool calibrateRequested = false;
+
+String candidateState = "";
+int candidateCount = 0;
+
+// time control variable
+unsigned long now;
+unsigned long previousRead;
+unsigned long lastCloudSync;
+unsigned long badPostureStartTime = 0;
+bool isBadPosture = false;
+
+void setup()
+{
+  Serial.begin(9600);
+  delay(1500); // delay gives the chance to wait for a Serial Monitor
+
+  pinMode(HEAD_TRIG,  OUTPUT);
+  pinMode(HEAD_ECHO,  INPUT);
+  pinMode(CHEST_TRIG, OUTPUT);
+  pinMode(CHEST_ECHO, INPUT);
+
+  pinMode(LED_R, OUTPUT);
+  pinMode(LED_G, OUTPUT);
+  pinMode(LED_B, OUTPUT);
+
+  // no pin setup need for passive buzzer
+
+  lcd.init();
+  lcd.backlight();
+  lcd.print("SPYNE Starting..");
+
+  // Connecting to Arduino IOT Cloud
+  initProperties();
+  ArduinoCloud.begin(ArduinoIoTPreferredConnection);
+  setDebugMessageLevel(2);
+  ArduinoCloud.printDebugInfo();
+
+  while (ArduinoCloud.connected() == 0) { // blink Blue while not connected
+    ArduinoCloud.update(); // Keep background connection
+    setColor(0, 0, 255); // Blink Blue
+    delay(300);
+    setColor(0, 0, 0);
+    delay(300);
+    Serial.print(".");
+  }
+  
+  setColor(0, 255, 0);
+  lcd.clear();
+  postureState = "NOT SITTING";
+  lcd.print("Connected!");
+  delay(1000);
+  lcd.clear();
+}
+
+// +-----------+
+// | MAIN LOOP |
+// +-----------+
+void loop()
+{
+  ArduinoCloud.update();
+
+  if (calibrateRequested) { // calibration
+    calibrateRequested = false;
+    runCalibration();
+    calibrateTrigger = false;
+  }
+
+  now = millis();
+  // read from sensor
+  if (now - previousRead &gt;= SENSOR_INTERVAL) {
+    previousRead = now;
+    local_head_distance = readFiltered(HEAD_TRIG, HEAD_ECHO);
+    delay(30);
+    local_chest_distance = readFiltered(CHEST_TRIG, CHEST_ECHO);
+
+    classifyPosture();
+
+    displayLocalFeedback();
+  }
+
+  // sync distance to cloud
+  if (now - lastCloudSync &gt;= CLOUD_INTERVAL) {
+    lastCloudSync = now;
+    headDistance = local_head_distance;
+    chestDistance = local_chest_distance;
+  }
+}
+
+void setColor(int r, int g, int b) {
+  analogWrite(LED_R, r);
+  analogWrite(LED_G, g);
+  analogWrite(LED_B, b);
+}
+
+int readUltrasonicSensor(int trig, int echo) {
+  digitalWrite(trig, LOW);
+  delayMicroseconds(10);
+  digitalWrite(trig, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trig, LOW);
+
+  long pulseWidth = pulseIn(echo, HIGH, 25000); // timeout 25ms
+  if (pulseWidth == 0) { // timeout
+    return NO_ECHO;
+  }
+  return pulseWidth*0.0343/2.0;
+}
+
+int readFiltered(int trig, int echo) {
+  int sum = 0;
+  int count = 0;
+  for (int i=0; i&lt;3; i++) {
+    int d = readUltrasonicSensor(trig, echo);
+    if (d &lt; NO_ECHO) { // ignore timeout
+      sum += d;
+      count++;
+    }
+    delay(15);
+  }
+  if (count == 0) return NO_ECHO;   // all 3 timed out
+  return sum / count;
+}
+
+void runCalibration() {
+  // count down 3 seconds and set head_base_line and chest_base_line
+  int SAMPLES = 10;
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("Sit Upright!");
+  lcd.setCursor(0,1);
+  lcd.print("Calibrate in: ");
+  for (int i=3; i&gt;0; i--) {
+    ArduinoCloud.update(); // Keep background connection
+    lcd.setCursor(14,1);
+    lcd.print(i);
+    setColor(0, 255, 255);
+    tone(BUZZER_PIN, 400, 300); // change count down tone
+    delay(300);
+    setColor(0, 0, 0);
+    delay(700);
+  }
+  tone(BUZZER_PIN, TONE, 100);
+
+  long sumH = 0, sumC = 0;
+  for (int s=0; s&lt;SAMPLES; s++) {
+    sumH += readUltrasonicSensor(HEAD_TRIG, HEAD_ECHO);
+    delay(35);
+    sumC += readUltrasonicSensor(CHEST_TRIG, CHEST_ECHO);
+    delay(35);
+  }
+
+  head_base_line  = sumH / SAMPLES;
+  chest_base_line = sumC / SAMPLES;
+
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Saved Baseline!");
+  lcd.setCursor(0, 1);
+  lcd.print("H:"); 
+  lcd.print(head_base_line);
+  lcd.print("cm C:"); 
+  lcd.print(chest_base_line); 
+  lcd.print("cm");
+  tone(BUZZER_PIN, TONE, 100);
+
+  delay(2000);
+  lcd.clear();
+}
+
+String computeState() {
+  int tol = (toleranceDistance &gt; 0) ? toleranceDistance : 6;
+
+  bool headOutFrame  = local_head_distance  &gt; (head_base_line  + OUT_FRAME_MARGIN);
+  bool chestOutFrame = local_chest_distance &gt; (chest_base_line + OUT_FRAME_MARGIN);
+
+  bool headNormal  = abs(local_head_distance  - head_base_line)  &lt;= tol;
+  bool chestNormal = abs(local_chest_distance - chest_base_line) &lt;= tol;
+
+  bool headNear  = local_head_distance  &lt; (head_base_line  - tol);
+  bool chestNear = local_chest_distance &lt; (chest_base_line - tol);
+
+  bool headFar   = local_head_distance  &gt; (head_base_line  + tol);
+  bool chestFar  = local_chest_distance &gt; (chest_base_line + tol);
+
+  if (headOutFrame &amp;&amp; chestOutFrame)        return "NOT SITTING";
+  if (headNormal &amp;&amp; chestNormal)            return "UPRIGHT";
+  if (headNear &amp;&amp; chestNear)                return "TOO CLOSE";
+  if (headFar &amp;&amp; chestFar)                  return "TOO FAR";
+  if (headNear &amp;&amp; chestNormal)              return "HEAD FORWARD";
+  if (chestFar &amp;&amp; (headNormal || headNear)) return "SLIDE / SLUMP";
+  return "UNBALANCED";
+}
+
+void classifyPosture() {
+  String raw = computeState();
+
+  if (raw == postureState) {          // stable
+    candidateCount = 0;
+    candidateState = "";
+  } else if (raw == candidateState) { // same new state again
+    if (++candidateCount &gt;= STATE_CONFIRM) {
+      postureState = raw;
+      candidateCount = 0;
+      candidateState = "";
+    }
+  } else {                            // different state, start counting
+    candidateState = raw;
+    candidateCount = 1;
+  }
+}
+
+void displayLocalFeedback() {
+  static unsigned long lastBeepTime = 0;
+  // row 1: head and chest distance
+  lcd.setCursor(0, 0);
+  lcd.print("H:");
+  lcd.print(local_head_distance);
+  lcd.print("cm  ");
+  lcd.setCursor(8, 0);
+  lcd.print("C:");
+  lcd.print(local_chest_distance);
+  lcd.print("cm   ");
+
+  // row 2: posture
+  lcd.setCursor(0, 1);
+  lcd.print(postureState);
+  for (int i = postureState.length(); i &lt; 16; i++) {
+    lcd.print(" "); // clear old String
+  }
+
+  // RGB and passive buzzer control
+  if (postureState == "UPRIGHT") {
+    setColor(0, 255, 0); // green
+    isBadPosture = false;
+  } 
+  else if (postureState == "NOT SITTING") {
+    setColor(0, 0, 255); // blue
+    isBadPosture = false;
+  } 
+  else { // else is bad posture: (Too Close, Too Far, Head Forward, Slide)
+    if (!isBadPosture) {
+      badPostureStartTime = millis();
+      isBadPosture = true;
+    }
+
+    unsigned long badDuration = millis() - badPostureStartTime;
+    if (badDuration &lt; ALERT_DELAY) {
+      setColor(255, 180, 0); // 1st warning: yellow RGB, no Buzzer
+    } else {
+      setColor(255, 0, 0);   // 2nd warning: red RGB, Buzzer sound
+      if (millis() - lastBeepTime &gt;= 1000) {
+        lastBeepTime = millis();
+        tone(BUZZER_PIN, TONE, 50);
+      }
+    }
+  }
+}
+
+// +----------------+
+// | CLOUD FUNCTION |
+// +----------------+
+
+void onCalibrateTriggerChange()  {
+  if (calibrateTrigger) {
+    calibrateRequested = true;
+  }
+}
+
+void onToleranceDistanceChange()  {
+  Serial.print("New Tolerance from Cloud: +/- ");
+  Serial.print(toleranceDistance);
+  Serial.println(" cm");
+}</code></pre>
+        </details>
+        <div class="source-links">
+          <a class="text-link" href="https://github.com/fuze-thnd/SPYNE" target="_blank" rel="noopener">รีโปโครงงาน SPYNE ↗</a>
+          <a class="text-link" href="https://github.com/cdnau/SPYNE.github.io" target="_blank" rel="noopener">Source Code เว็บไซต์บน GitHub ↗</a>
         </div>
       </section>
 
