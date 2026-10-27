@@ -80,10 +80,7 @@
         <div class="hero-visual">
           <div class="visual-top">
             <span>
-              SPYNE / SENSOR STUDY
-            </span>
-            <span>
-              01 — 02
+              SPYNE
             </span>
           </div>
           <img class="posture-diagram" src="assets/posture-diagram.svg" alt="ภาพแนวคิดคนนั่งหันเข้าหาจอทางซ้าย เข่าและเท้าอยู่ด้านหน้าผู้ใช้">
@@ -118,7 +115,7 @@
             </em>
           </b>
           <span>
-            ท่าหลัก + สถานะไม่สมดุลในโค้ด
+            7 รูปแบบการตรวจจับ
           </span>
         </div>
         <div>
@@ -188,9 +185,6 @@
           <p>
             เมื่อท่าที่ต้องปรับคงอยู่ต่อเนื่อง ระบบตามโค้ดต้นแบบจะแจ้งเตือนผ่าน RGB LED และ Buzzer พร้อมแสดงระยะและสถานะบน LCD
           </p>
-          <div class="note">
-            สถานะโครงงาน: โค้ดยังไม่ใช่ฉบับสุดท้าย ประสิทธิภาพและผลการทดลองจริงรอทีมผู้จัดทำยืนยัน
-          </div>
         </div>
       </section>
 
@@ -354,42 +348,7 @@
         <div id="evidence-grid" class="evidence-grid">
         </div>
 
-        <!-- 07. ผลการทดลอง — เปลี่ยนข้อความเมื่อมีผลจริง -->
-        <div class="results">
-          <h3>
-            บันทึกผลการทดลอง
-            <span class="tag">
-              รอข้อมูลจริง
-            </span>
-          </h3>
-          <p>
-            ทีมจะเติมวิธีทดสอบ จำนวนครั้ง สถานะที่ตรวจจับได้ ระยะเวลาแจ้งเตือน และข้อจำกัดที่พบหลังทดลอง
-          </p>
-          <div class="result-row">
-            <span>
-              ความถูกต้องในการจำแนกท่า
-            </span>
-            <b>
-              ยังไม่ได้รายงานผล
-            </b>
-          </div>
-          <div class="result-row">
-            <span>
-              เวลาตอบสนองและการแจ้งเตือน
-            </span>
-            <b>
-              รอวัดจากอุปกรณ์จริง
-            </b>
-          </div>
-          <div class="result-row">
-            <span>
-              ความเสถียรของการเชื่อมต่อ Cloud
-            </span>
-            <b>
-              รอทดสอบต่อเนื่อง
-            </b>
-          </div>
-        </div>
+      
       </section>
 
       <!-- 08. Hardware — ภาพมีเฉพาะอุปกรณ์ที่ระบุรุ่นได้แน่ชัด -->
@@ -432,18 +391,38 @@
           <table class="project-table">
             <thead><tr><th scope="col">อุปกรณ์</th><th scope="col">หน้าที่ / ข้อมูลที่ระบุ</th><th scope="col">สถานะรูป</th></tr></thead>
             <tbody>
-              <tr><th scope="row">LCD 16×2 พร้อม I2C</th><td>แสดงระยะและสถานะ ใช้ LiquidCrystal_I2C ที่ address 0x27 ตามโค้ด</td><td>รอยืนยันรหัสรุ่น</td></tr>
-              <tr><th scope="row">RGB LED</th><td>แสดงสถานะด้วยสี ควบคุมช่อง R / G / B แยกกัน</td><td>รอยืนยันรุ่นและชนิดขาร่วม</td></tr>
-              <tr><th scope="row">Buzzer</th><td>แจ้งเตือนด้วยเสียง โค้ดระบุ Passive Buzzer และใช้ tone()</td><td>รอยืนยันชนิดและรุ่นจริง</td></tr>
-              <tr><th scope="row">Breadboard</th><td>ใช้ประกอบวงจรต้นแบบ ไฟล์ไม่ได้ระบุขนาดหรือรุ่น</td><td>รอยืนยันรุ่น</td></tr>
-              <tr><th scope="row">Jumper wires / Resistors</th><td>ใช้ต่อวงจร ไฟล์ไม่ได้ระบุชนิดสายและค่าตัวต้านทาน</td><td>รอยืนยันรายละเอียด</td></tr>
+              <tr>
+                  <th scope="row">LCD 16×2 พร้อม I2C</th>
+                  <td>แสดงระยะและสถานะ ใช้ LiquidCrystal_I2C ที่ address 0x27 ตามโค้ด</td>
+                  <td><img src="assets/LCD.jpg" alt="LCD 16x2" width="150"></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">RGB LED</th>
+                  <td>แสดงสถานะด้วยสี ควบคุมช่อง R / G / B แยกกัน</td>
+                  <td><img src="assets/RGB.png" alt="RGB LED" width="150"></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Buzzer</th>
+                  <td>แจ้งเตือนด้วยเสียง โค้ดระบุ Passive Buzzer และใช้ tone()</td>
+                  <td><img src="assets/BUZZER.jpg" alt="Buzzer" width="150"></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Breadboard</th>
+                  <td>ใช้ประกอบวงจรต้นแบบ ไฟล์ไม่ได้ระบุขนาดหรือรุ่น</td>
+                  <td><img src="assets/BB.jpg" alt="Breadboard" width="150"></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Jumper wires / Resistors</th>
+                  <td>ใช้ต่อวงจร ไฟล์ไม่ได้ระบุชนิดสายและค่าตัวต้านทาน</td>
+                  <td><img src="assets/JUMPPER.jpg" alt="Jumper Wires" width="150"></td>
+                </tr>
             </tbody>
           </table>
         </div>
-        <details class="hardware-note">
-          <summary>หมายเหตุอุปกรณ์และข้อมูลที่ยังต้องยืนยัน</summary>
-          <p>เอกสาร README เดิมระบุ Active Buzzer แต่ SPYNE.ino ระบุ Passive Buzzer และใช้ tone() จึงต้องตรวจอุปกรณ์จริงก่อนสรุปชนิด ส่วน LCD, RGB LED และอุปกรณ์ต่อวงจรไม่มีรหัสรุ่นที่เพียงพอสำหรับเลือกรูปตรงรุ่น จึงแสดงข้อมูลจากไฟล์และรอทีมยืนยัน</p>
-        </details>
       </section>
 
       <!-- 08A. รายละเอียดการทำงาน — อ้างอิง SPYNE.ino และ Cloud Varibale.docx -->

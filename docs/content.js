@@ -17,7 +17,7 @@ window.SPYNE_CONTENT = {
     {
       title: 'ชิ้นงานและการติดตั้ง',
       note: 'ภาพอุปกรณ์จริง พร้อมตำแหน่งเซนเซอร์ทั้งสองระดับ',
-      src: '',
+      src: 'assets/SPYNE DEMO.jpg',
       type: 'image'
     },
     {
@@ -29,7 +29,7 @@ window.SPYNE_CONTENT = {
     {
       title: 'ทดสอบระบบแจ้งเตือน',
       note: 'คลิป LED และเสียง เมื่อคงท่าที่ต้องปรับต่อเนื่อง',
-      src: '',
+      src: 'assets/SP.mov',
       type: 'video'
     }
   ]
