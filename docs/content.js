@@ -7,7 +7,7 @@
 window.SPYNE_CONTENT = {
   // 01. คลิปนำเสนอ: วางลิงก์ YouTube ระหว่างเครื่องหมาย ''
   // ตัวอย่าง: youtubeUrl: 'https://www.youtube.com/watch?v=VIDEO_ID',
-  youtubeUrl: '',
+  youtubeUrl: 'https://youtu.be/yrfo-nZxjXc?si=XB-arVmhPMjuKF3_',
 
   // 02. หลักฐานจากชิ้นงานจริง
   // src: '' คือยังไม่มีสื่อ จะแสดงพื้นที่รอไว้
